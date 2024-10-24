@@ -1,0 +1,25 @@
+/*element selector*/
+p{
+    color: red;
+}
+/*universal selector*/
+*{
+ color: burlywood ;
+}
+/*class selector best practice*/
+.myclass{
+    background-color: green;
+}
+/*id selector*/
+#myclass{
+    background-color: aqua;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+
+}
+.auth
