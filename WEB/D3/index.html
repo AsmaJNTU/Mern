@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form class="login-form">
-        <input type="email" name="" class="login-input" placeholder="email" required /> 
-        <input type="password" name="" class="login-input" id="" placeholder="password" reuired />
+    <form class="login-form" onsubmit="Login( event)">
+        <input type="email" name="" class="login-input" id="email" placeholder="email" required /> 
+        <input type="password" name="" class="login-input" id="password" placeholder="password" reuired />
         <input type="submit" value="Login" class="login-btn">
     
     </form>
+    <!-- <button class="login-btn" onclick="myfunction()">click</button> -->
 </body>
 
 <script>
-    console.log("Hello Asma");
-    alert("Oye")
+
+    //console.log("Hello Asma");
+   // alert("Oye")
 
     let x="10";
     x=30;
@@ -41,8 +43,29 @@
         age:21,
         isalive:true
     }
-    console.log(obj1,obj2);
+    //console.log(obj1,obj2);
     let arr=["a",obj1,x,obj2]
-    console.log(arr);
+    //console.log(arr);
+    let arr2=[1,2,3,4,5,6]
+    //console.log(arr2);
+    let arr3=[arr,"asma",arr2];
+    let arr4=[...arr,"asmns",...arr2];
+    console.log(arr3);
+    console.log(arr4);
+
+    function myfunction( ){
+        console.error("hello man")
+        console.warn("hello man")
+    }
+
+    //myfunction()
+    function Login(event){
+          event.preventDefault()
+          let email=document.getElementById('email').value;
+          let password=document.getElementById('password').value;
+          
+
+          console.log("Login " +email+" "+password);
+    }
 </script>
 </html>
