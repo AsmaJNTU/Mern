@@ -11,6 +11,7 @@ const App = () => {
     {test}
     <p className='text-yellow-500'>{test}</p>
     <Navbar appdata={data} logo={logodata}/>
+    
     </>
   )
 }
