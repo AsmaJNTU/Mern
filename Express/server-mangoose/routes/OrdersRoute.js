@@ -1,40 +1,38 @@
-const express = require('express')
+const express=require('express')
+const router=express.Router()
+const Orders=require('../models/OrdersSchema')
 
-const router = express.Router()
-const Users = require('../models/user')
-
-router.get('/all', async (req, res) => {
-    try {
-        const users = await Users.find()
-        res.status(200).json(users)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
+router.get('/all',async(req,res)=>{
+    try{
+        const order=await Orders.find()
+        res.status(200).json(order)
+    }catch(error){
+        res.status(500).json({message:error})
     }
 })
 
 router.post('/add', async (req, res) => {
     try {
-        const UserData = new Users(req.body)
-        const { name, email, phone,password } = UserData
-        if (!name || !email || !phone || !password) {
+        const OrderData = new Orders(req.body)
+        const { user, productid, orderprice,shppingadd,orderdate } = OrderData
+        if (!user || !productid || !orderprice || !shppingadd ||!orderdate) {
             res.status(401).json({ message: "all fiels required" })
         }
-        const storedata = await UserData.save()
+        const storedata = await OrderData.save()
         res.status(200).json(storedata)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 })
 
-
 router.put("/edit/:id",async(req,res)=>{
     try{
   const id=req.params.id
-  const existingproduct=await Users.findOne({_id:id})
+  const existingproduct=await Orders.findOne({_id:id})
   if(!existingproduct){
     res.status(404).json({message:"Product not found!"})
   }
-  const updateproduct=await Users.findByIdAndUpdate(id,req.body,{new:true})
+  const updateproduct=await Orders.findByIdAndUpdate(id,req.body,{new:true})
   res.status(200).json(updateproduct)
     }
     catch(error){
@@ -44,11 +42,11 @@ router.put("/edit/:id",async(req,res)=>{
   router.delete('/delete/:id',async(req,res)=>{
     try{
       const id=req.params.id
-      const existingproduct=await Users.findOne({_id:id})
+      const existingproduct=await Orders.findOne({_id:id})
       if(!existingproduct){
         res.status(404).json({message:"Product not found!"})
       }
-      const deleteproduct =await Users.findByIdAndDelete(id,req.body,{new:true})
+      const deleteproduct =await Orders.findByIdAndDelete(id,req.body,{new:true})
       res.status(200).json({message:"Product deleted"})
         }
         catch(error){
@@ -56,13 +54,3 @@ router.put("/edit/:id",async(req,res)=>{
         }
       })
 module.exports = router
-
-
-
-
-
-
-
-
-
-

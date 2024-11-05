@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 
-const UsersSchema= new mongoose.Schema({
+const OrderSchema= new mongoose.Schema({
     user:{
         type:String,
         required:true
@@ -11,7 +11,7 @@ const UsersSchema= new mongoose.Schema({
         required:true,
         // unique:true
      },
-     ordrerprice:{
+     orderprice:{
         type:Number,
         required:true,
         // unique :true
@@ -20,7 +20,7 @@ const UsersSchema= new mongoose.Schema({
         type :String,
         required :true
     },
-    ordrerdate:{
+    orderdate:{
         type :String,
         required:true
     }
@@ -28,6 +28,6 @@ const UsersSchema= new mongoose.Schema({
 
 
 })
-const Users =mongoose.model("Users",UsersSchema)
+const Orders =mongoose.model("Orders",OrderSchema)
 
-module.exports=mongoose
+module.exports=Orders
