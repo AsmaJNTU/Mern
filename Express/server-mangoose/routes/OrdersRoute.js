@@ -4,8 +4,8 @@ const Orders=require('../models/OrdersSchema')
 
 router.get('/all',async(req,res)=>{
     try{
-        const order=await Orders.find()
-        res.status(200).json(order)
+        const Order=await Orders.find()
+        res.status(200).json(Order)
     }catch(error){
         res.status(500).json({message:error})
     }
