@@ -14,7 +14,10 @@ const validateToken = (req, res, next) => {
         if (exp < (Date.now() / 1000)) {
             return res.status(500).json({ message: "Token Expired" })
         }
-
+        const role = validate.role
+        if (!role) {
+            return res.status(500).json({ message: "Invalid Access" })
+        }
         next()
     } catch (error) {
         return res.status(500).json({ message: "Invalid token" })
